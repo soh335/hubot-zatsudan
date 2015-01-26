@@ -1,0 +1,25 @@
+{
+  "name": "hubot-zatsudan",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.coffee",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/miyagawa/hubot-cron.git"
+  },
+  "keywords": [
+    "hubot"
+  ],
+  "author": "soh335",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/soh335/hubot-zatsudan/issues"
+  },
+  "homepage": "https://github.com/soh335/hubot-zatsudan",
+  "dependencies": {
+    "request": "^2.51.0"
+  }
+}
