@@ -1,3 +1,6 @@
+# Commands
+#   hubot zatsudan chara <chara> - change character. <chara> is ゼロ, 桜子 and ハヤテ.
+
 request = require 'request'
 
 module.exports = (robot) ->
@@ -17,6 +20,24 @@ module.exports = (robot) ->
 
   context = undefined
   mode    = 'dialog'
+  t       = undefined
+
+  robot.respond /zatsudan chara (.*)/i, (msg) ->
+    chara = msg.match[1]
+
+    # https://dev.smt.docomo.ne.jp/?p=docs.api.page&api_docs_id=5
+    switch chara
+      when "reset", "default", "ゼロ"
+        t = undefined
+        msg.reply "success to change"
+      when "20", "桜子"
+        t = 20
+        msg.reply "success to change"
+      when "30", "ハヤテ"
+        t = 30
+        msg.reply "success to change"
+      else
+        msg.reply "no match chara: #{chara}"
 
   robot.catchAll (msg) ->
 
@@ -31,6 +52,11 @@ module.exports = (robot) ->
 
     if context?
       body["context"] = context
+
+    if t?
+      body["t"] = t
+
+    robot.logger.debug(body)
 
     request.post({
       url: "https://api.apigw.smt.docomo.ne.jp/dialogue/v1/dialogue"
