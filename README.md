@@ -1,3 +1,4 @@
+[![wercker status](https://app.wercker.com/status/f1ff4fed86b2578b67ef19260384af8d/s/master "wercker status")](https://app.wercker.com/project/bykey/f1ff4fed86b2578b67ef19260384af8d)
 # hubot-zatsudan
 
 hubot-zatsudan is a port of [ruboty-talk](https://github.com/r7kamura/ruboty-talk).
