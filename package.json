@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.coffee",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -21,5 +21,12 @@
   "homepage": "https://github.com/soh335/hubot-zatsudan",
   "dependencies": {
     "request": "^2.51.0"
+  },
+  "devDependencies": {
+    "coffee-script": "^1.9.0",
+    "expect.js": "^0.3.1",
+    "hubot-test-helper": "0.0.3",
+    "mocha": "^2.1.0",
+    "sinon": "^1.12.2"
   }
 }
