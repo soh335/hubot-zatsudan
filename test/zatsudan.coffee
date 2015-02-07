@@ -1,5 +1,5 @@
 request = require 'request'
-expect  = require 'expect.js'
+assert  = require 'power-assert'
 sinon   = require 'sinon'
 
 Helper = require 'hubot-test-helper'
@@ -16,43 +16,43 @@ describe 'zatsudan', ->
 
     it 'reset', ->
       room.user.say 'alice', '@hubot zatsudan chara reset'
-      expect(room.messages[1]).to.eql [
+      assert.deepEqual room.messages[1], [
         'hubot', '@alice success to change'
       ]
 
     it 'default', ->
       room.user.say 'alice', '@hubot zatsudan chara default'
-      expect(room.messages[1]).to.eql [
+      assert.deepEqual room.messages[1], [
         'hubot', '@alice success to change'
       ]
 
     it 'ゼロ', ->
       room.user.say 'alice', '@hubot zatsudan chara ゼロ'
-      expect(room.messages[1]).to.eql [
+      assert.deepEqual room.messages[1], [
         'hubot', '@alice success to change'
       ]
 
     it '20', ->
       room.user.say 'alice', '@hubot zatsudan chara 20'
-      expect(room.messages[1]).to.eql [
+      assert.deepEqual room.messages[1], [
         'hubot', '@alice success to change'
       ]
 
     it '桜子', ->
       room.user.say 'alice', '@hubot zatsudan chara 桜子'
-      expect(room.messages[1]).to.eql [
+      assert.deepEqual room.messages[1], [
         'hubot', '@alice success to change'
       ]
 
     it '30', ->
       room.user.say 'alice', '@hubot zatsudan chara 30'
-      expect(room.messages[1]).to.eql [
+      assert.deepEqual room.messages[1], [
         'hubot', '@alice success to change'
       ]
 
     it 'ハヤテ', ->
       room.user.say 'alice', '@hubot zatsudan chara ハヤテ'
-      expect(room.messages[1]).to.eql [
+      assert.deepEqual room.messages[1], [
         'hubot', '@alice success to change'
       ]
 
@@ -66,12 +66,12 @@ describe 'zatsudan', ->
         msg.reply 'pong'
 
       room.user.say 'alice', '@hubot ping'
-      expect(room.messages).to.eql [
+      assert.deepEqual room.messages, [
         ['alice', '@hubot ping']
         ['hubot', '@alice pong']
       ]
 
-      expect(request.post.callCount).to.be(0)
+      assert.equal request.post.callCount, 0
       request.post.restore()
 
 
@@ -85,12 +85,12 @@ describe 'zatsudan', ->
     runSpec = (who, msg, yields, called) ->
       sinon.stub(request, 'post').yields(yields[0], yields[1], yields[2])
       room.user.say who, msg
-      expect(request.post.calledWithMatch(called)).to.be.ok()
+      assert.ok request.post.calledWithMatch(called)
       request.post.restore()
 
       sinon.spy(request, 'post')
       room.user.say who, msg
-      expect(room.messages[room.messages.length-2]).to.eql [
+      assert.deepEqual room.messages[room.messages.length-2], [
         'hubot', "@#{who} #{yields[2]["utt"]}"
       ]
       request.post.restore()
@@ -100,7 +100,7 @@ describe 'zatsudan', ->
       sinon.stub(request, 'post').yields(null, { statusCode: 500 }, {})
 
       room.user.say 'alice', '@hubot hi'
-      expect(room.messages).to.eql [
+      assert.deepEqual room.messages, [
         ['alice', '@hubot hi']
       ]
 

@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.coffee",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha --require espower-coffee/guess test/*.coffee"
   },
   "repository": {
     "type": "git",
@@ -24,9 +24,10 @@
   },
   "devDependencies": {
     "coffee-script": "^1.9.0",
-    "expect.js": "^0.3.1",
+    "espower-coffee": "^0.10.0",
     "hubot-test-helper": "0.0.3",
     "mocha": "^2.1.0",
+    "power-assert": "^0.10.1",
     "sinon": "^1.12.2"
   }
 }
