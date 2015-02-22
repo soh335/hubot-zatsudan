@@ -1,6 +1,6 @@
 {
   "name": "hubot-zatsudan",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "",
   "main": "index.coffee",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/miyagawa/hubot-cron.git"
+    "url": "git://github.com/soh335/hubot-zatsudan.git"
   },
   "keywords": [
     "hubot"
